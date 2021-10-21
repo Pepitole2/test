@@ -1,0 +1,362 @@
+---
+    -
+        nomAPI: APIName1
+        passerelle: P-API   
+        prioritéDGNUM: P1
+        version: V1
+        nbAPI: 2
+        statutPlanification:  URGENT 
+        etatAPI: APIStat
+        datePremierEnvoi: 
+        dateDernierEnvoiSwager: 
+        delaiAPIM:   
+        stabilitéApi: Instable
+        dateLivraisonPrévu: 
+        dateEffectiveValidation: 
+        dateGoPrévue:  
+        dateGoOfficielPréProd: 
+        délaiNemo: 
+        datePrévueNemoMEPP: 04/01/2021 
+        dateEffectiveNemoMEPP: 
+        datePrévueMEPP: 25/03/2021
+        dateEffectiveMEPP: 
+        datePrévueDemandeMEP: 24/04/2021
+        dateEffectiveDemandeMEP:
+        datePrévueMEP: 08/05/2021
+        dateEffectiveMEP:
+        dateGoOfficielProd: 
+        délaiPourMep: 
+        dateMepEnvisagée: 
+        demandeDeDésactivation: 
+        dateEffectiveDésactivation:
+    -
+        nomAPI: APIName2
+        passerelle: INTRADEF   
+        prioritéDGNUM: P1
+        version: V1
+        nbAPI: 10
+        statutPlanification: PAR_DEFAULT
+        etatAPI: APIStat
+        datePremierEnvoi: 
+        dateDernierEnvoiSwager: 
+        delaiAPIM:   
+        stabilitéApi: Instable
+        dateLivraisonPrévu: 
+        dateEffectiveValidation: 
+        dateGoPrévue:  
+        dateGoOfficielPréProd: 
+        délaiNemo: 
+        datePrévueNemoMEPP: 01/01/2021 
+        dateEffectiveNemoMEPP: 
+        datePrévueMEPP: 25/03/2021
+        dateEffectiveMEPP: 
+        datePrévueDemandeMEP: 15/05/2021
+        dateEffectiveDemandeMEP:
+        datePrévueMEP: 08/06/2021
+        dateEffectiveMEP:
+        dateGoOfficielProd: 
+        délaiPourMep: 
+        dateMepEnvisagée: 
+        demandeDeDésactivation: 
+        dateEffectiveDésactivation:
+    -
+        nomAPI: APIName3
+        passerelle: INTRADEF   
+        prioritéDGNUM: 
+        version: V1
+        nbAPI: 1
+        statutPlanification: URGENT 
+        etatAPI: APIStat
+        datePremierEnvoi: 
+        dateDernierEnvoiSwager: 
+        delaiAPIM:   
+        stabilitéApi: Instable
+        dateLivraisonPrévu: 
+        dateEffectiveValidation: 
+        dateGoPrévue:  
+        dateGoOfficielPréProd: 
+        délaiNemo: 
+        datePrévueNemoMEPP: 01/02/2021 
+        dateEffectiveNemoMEPP: 
+        datePrévueMEPP: 27/02/2021
+        dateEffectiveMEPP: 
+        datePrévueDemandeMEP: 05/06/2021
+        dateEffectiveDemandeMEP:
+        datePrévueMEP: 30/06/2021
+        dateEffectiveMEP:
+        dateGoOfficielProd: 
+        délaiPourMep: 
+        dateMepEnvisagée: 
+        demandeDeDésactivation: 
+        dateEffectiveDésactivation:
+    -
+        nomAPI: APIName4
+        passerelle: INTRADEF   
+        prioritéDGNUM: P1
+        version: V1
+        nbAPI: 4
+        statutPlanification: CONFIRME 
+        etatAPI: APIStat
+        datePremierEnvoi: 
+        dateDernierEnvoiSwager: 
+        delaiAPIM:   
+        stabilitéApi: Instable
+        dateLivraisonPrévu: 
+        dateEffectiveValidation: 
+        dateGoPrévue:  
+        dateGoOfficielPréProd: 
+        délaiNemo: 
+        datePrévueNemoMEPP: 08/02/2021 
+        dateEffectiveNemoMEPP: 
+        datePrévueMEPP: 25/03/2021
+        dateEffectiveMEPP: 
+        datePrévueDemandeMEP: 15/05/2021
+        dateEffectiveDemandeMEP:
+        datePrévueMEP: 08/06/2021
+        dateEffectiveMEP:
+        dateGoOfficielProd: 
+        délaiPourMep: 
+        dateMepEnvisagée: 
+        demandeDeDésactivation: 
+        dateEffectiveDésactivation:
+    -
+        nomAPI: APIName5
+        passerelle: INTRADEF   
+        prioritéDGNUM: 
+        version: V2
+        nbAPI: 3
+        statutPlanification: PAR_DEFAULT
+        etatAPI: APIStat
+        datePremierEnvoi: 
+        dateDernierEnvoiSwager: 
+        delaiAPIM:   
+        stabilitéApi: Instable
+        dateLivraisonPrévu: 
+        dateEffectiveValidation: 
+        dateGoPrévue:  
+        dateGoOfficielPréProd: 
+        délaiNemo: 
+        datePrévueNemoMEPP: 04/01/2021 
+        dateEffectiveNemoMEPP: 
+        datePrévueMEPP: 08/02/2021
+        dateEffectiveMEPP: 
+        datePrévueDemandeMEP: 24/04/2021
+        dateEffectiveDemandeMEP:
+        datePrévueMEP: 29/09/2021
+        dateEffectiveMEP:
+        dateGoOfficielProd: 
+        délaiPourMep: 
+        dateMepEnvisagée: 
+        demandeDeDésactivation: 
+        dateEffectiveDésactivation:
+    -
+        nomAPI: APIName6
+        passerelle: INTERNET   
+        prioritéDGNUM: P1
+        version: V1
+        nbAPI: 1
+        statutPlanification: URGENT 
+        etatAPI: APIStat
+        datePremierEnvoi: 
+        dateDernierEnvoiSwager: 
+        delaiAPIM:   
+        stabilitéApi: Instable
+        dateLivraisonPrévu: 
+        dateEffectiveValidation: 
+        dateGoPrévue:  
+        dateGoOfficielPréProd: 
+        délaiNemo: 
+        datePrévueNemoMEPP: 02/03/2021 
+        dateEffectiveNemoMEPP: 
+        datePrévueMEPP: 25/04/2021
+        dateEffectiveMEPP: 
+        datePrévueDemandeMEP: 18/07/2021
+        dateEffectiveDemandeMEP:
+        datePrévueMEP: 08/08/2021
+        dateEffectiveMEP:
+        dateGoOfficielProd: 
+        délaiPourMep: 
+        dateMepEnvisagée: 
+        demandeDeDésactivation: 
+        dateEffectiveDésactivation:
+    -
+        nomAPI: APIName7
+        passerelle: INTRADEF   
+        prioritéDGNUM: P1
+        version: V3
+        nbAPI: 1
+        statutPlanification: CONFIRME 
+        etatAPI: APIStat
+        datePremierEnvoi: 
+        dateDernierEnvoiSwager: 
+        delaiAPIM:   
+        stabilitéApi: Instable
+        dateLivraisonPrévu: 
+        dateEffectiveValidation: 
+        dateGoPrévue:  
+        dateGoOfficielPréProd: 
+        délaiNemo: 
+        datePrévueNemoMEPP: 25/01/2021 
+        dateEffectiveNemoMEPP: 
+        datePrévueMEPP: 27/02/2021
+        dateEffectiveMEPP: 
+        datePrévueDemandeMEP: 05/03/2021
+        dateEffectiveDemandeMEP:
+        datePrévueMEP: 03/04/2021
+        dateEffectiveMEP:
+        dateGoOfficielProd: 
+        délaiPourMep: 
+        dateMepEnvisagée: 
+        demandeDeDésactivation: 
+        dateEffectiveDésactivation:
+    -
+        nomAPI: APIName8
+        passerelle: INTERNET   
+        prioritéDGNUM: P1
+        version: V1
+        nbAPI: 1
+        statutPlanification: CONFIRME
+        etatAPI: APIStat
+        datePremierEnvoi: 
+        dateDernierEnvoiSwager: 
+        delaiAPIM:   
+        stabilitéApi: Instable
+        dateLivraisonPrévu: 
+        dateEffectiveValidation: 
+        dateGoPrévue:  
+        dateGoOfficielPréProd: 
+        délaiNemo: 
+        datePrévueNemoMEPP: 18/03/2021 
+        dateEffectiveNemoMEPP: 
+        datePrévueMEPP: 25/05/2021
+        dateEffectiveMEPP: 
+        datePrévueDemandeMEP: 15/07/2021
+        dateEffectiveDemandeMEP:
+        datePrévueMEP: 02/10/2021
+        dateEffectiveMEP:
+        dateGoOfficielProd: 
+        délaiPourMep: 
+        dateMepEnvisagée: 
+        demandeDeDésactivation: 
+        dateEffectiveDésactivation:
+    -
+        nomAPI: APIName9
+        passerelle: P-API   
+        prioritéDGNUM: 
+        version: V3
+        nbAPI: 2
+        statutPlanification: PAR_DEFAULT
+        etatAPI: APIStat
+        datePremierEnvoi: 
+        dateDernierEnvoiSwager: 
+        delaiAPIM:   
+        stabilitéApi: Instable
+        dateLivraisonPrévu: 
+        dateEffectiveValidation: 
+        dateGoPrévue:  
+        dateGoOfficielPréProd: 
+        délaiNemo: 
+        datePrévueNemoMEPP: 25/01/2021 
+        dateEffectiveNemoMEPP: 
+        datePrévueMEPP: 27/02/2021
+        dateEffectiveMEPP: 
+        datePrévueDemandeMEP: 20/03/2021
+        dateEffectiveDemandeMEP:
+        datePrévueMEP: 10/04/2021
+        dateEffectiveMEP:
+        dateGoOfficielProd: 
+        délaiPourMep: 
+        dateMepEnvisagée: 
+        demandeDeDésactivation: 
+        dateEffectiveDésactivation:
+    -
+        nomAPI: APIName10
+        passerelle: INTERNET   
+        prioritéDGNUM: P1
+        version: V1
+        nbAPI: 5
+        statutPlanification: CONFIRME 
+        etatAPI: APIStat
+        datePremierEnvoi: 
+        dateDernierEnvoiSwager: 
+        delaiAPIM:   
+        stabilitéApi: Instable
+        dateLivraisonPrévu: 
+        dateEffectiveValidation: 
+        dateGoPrévue:  
+        dateGoOfficielPréProd: 
+        délaiNemo: 
+        datePrévueNemoMEPP: 29/01/2021 
+        dateEffectiveNemoMEPP: 
+        datePrévueMEPP: 25/03/2021
+        dateEffectiveMEPP: 
+        datePrévueDemandeMEP: 01/05/2021
+        dateEffectiveDemandeMEP:
+        datePrévueMEP: 27/05/2021
+        dateEffectiveMEP:
+        dateGoOfficielProd: 
+        délaiPourMep: 
+        dateMepEnvisagée: 
+        demandeDeDésactivation: 
+        dateEffectiveDésactivation:
+
+    -
+        nomAPI: APIName11
+        passerelle: INTRADEF
+        prioritéDGNUM: 
+        version: V3
+        nbAPI: 2
+        statutPlanification: PAR_DEFAULT
+        etatAPI: APIStat
+        datePremierEnvoi: 
+        dateDernierEnvoiSwager: 
+        delaiAPIM:   
+        stabilitéApi: Instable
+        dateLivraisonPrévu: 
+        dateEffectiveValidation: 
+        dateGoPrévue:  
+        dateGoOfficielPréProd: 
+        délaiNemo: 
+        datePrévueNemoMEPP: 25/05/2021 
+        dateEffectiveNemoMEPP: 
+        datePrévueMEPP: 27/06/2021
+        dateEffectiveMEPP: 
+        datePrévueDemandeMEP: 20/07/2021
+        dateEffectiveDemandeMEP:
+        datePrévueMEP: 10/08/2021
+        dateEffectiveMEP:
+        dateGoOfficielProd: 
+        délaiPourMep: 
+        dateMepEnvisagée: 
+        demandeDeDésactivation: 
+        dateEffectiveDésactivation:
+    -
+        nomAPI: APIName12
+        passerelle: INTERNET   
+        prioritéDGNUM: P5
+        version: V1
+        nbAPI: 5
+        statutPlanification: CONFIRME 
+        etatAPI: APIStat
+        datePremierEnvoi: 
+        dateDernierEnvoiSwager: 
+        delaiAPIM:   
+        stabilitéApi: Instable
+        dateLivraisonPrévu: 
+        dateEffectiveValidation: 
+        dateGoPrévue:  
+        dateGoOfficielPréProd: 
+        délaiNemo: 
+        datePrévueNemoMEPP: 29/03/2021 
+        dateEffectiveNemoMEPP: 
+        datePrévueMEPP: 25/04/2021
+        dateEffectiveMEPP: 
+        datePrévueDemandeMEP: 15/06/2021
+        dateEffectiveDemandeMEP:
+        datePrévueMEP: 01/07/2021
+        dateEffectiveMEP:
+        dateGoOfficielProd: 
+        délaiPourMep: 
+        dateMepEnvisagée: 
+        demandeDeDésactivation: 
+        dateEffectiveDésactivation:

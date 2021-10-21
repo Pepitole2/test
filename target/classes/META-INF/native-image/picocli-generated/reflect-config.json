@@ -1,0 +1,26 @@
+[
+  {
+    "name" : "com.example.svg.App",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true,
+    "fields" : [
+      { "name" : "date_debut" },
+      { "name" : "date_fin" },
+      { "name" : "filePath" },
+      { "name" : "x" }
+    ]
+  },
+  {
+    "name" : "picocli.CommandLine$AutoHelpMixin",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true,
+    "fields" : [
+      { "name" : "helpRequested" },
+      { "name" : "versionRequested" }
+    ]
+  }
+]
