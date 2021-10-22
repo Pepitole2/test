@@ -336,7 +336,7 @@
         prioritéDGNUM: P5
         version: V1
         nbAPI: 5
-        statutPlanification: CONFIRME 
+        statutPlanification: PAR_DEFAULT 
         etatAPI: APIStat
         datePremierEnvoi: 
         dateDernierEnvoiSwager: 

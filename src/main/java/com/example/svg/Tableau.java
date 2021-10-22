@@ -114,16 +114,16 @@ public class Tableau {
             
             drawFirstDayWeek(g, date_d, nombre_jour_afficher);
             //cercle blue
-            item.drawCircleMEPP(g, i,jour_d, jour_nemo_MEPP_INTRADEF, color1); 
-            item.drawCircleMEPP(g,i, jour_d,jour_nemo_MEPP_INTERNET,jour_nemo_MEPP_INTRADEF, color1);
-            item.drawCircleMEPP(g,i,jour_d, jour_nemo_MEPP_PAPI,jour_nemo_MEPP_INTRADEF,jour_nemo_MEPP_INTERNET, color1);
-            item.drawCircleMEPP(g,i, jour_d, jour_MEPP_INTRADEF, color1);
-            item.drawCircleMEPP(g, i, jour_d, jour_MEPP_INTERNET, jour_MEPP_INTRADEF, color1);
-            item.drawCircleMEPP(g, i, jour_d, jour_MEPP_PAPI, jour_MEPP_INTERNET, jour_MEPP_INTRADEF, color1);
+            item.drawCircleMEPP(g, i,jour_d, jour_nemo_MEPP_INTRADEF, color1, Statut_INTRADEF); 
+            item.drawCircleMEPP(g,i, jour_d,jour_nemo_MEPP_INTERNET,jour_nemo_MEPP_INTRADEF, color1,Statut_INTERNET);
+            item.drawCircleMEPP(g,i,jour_d, jour_nemo_MEPP_PAPI,jour_nemo_MEPP_INTRADEF,jour_nemo_MEPP_INTERNET, color1,Statut_PAPI);
+            item.drawCircleMEPP(g,i, jour_d, jour_MEPP_INTRADEF, color1, Statut_INTRADEF);
+            item.drawCircleMEPP(g, i, jour_d, jour_MEPP_INTERNET, jour_MEPP_INTRADEF, color1,Statut_INTERNET);
+            item.drawCircleMEPP(g, i, jour_d, jour_MEPP_PAPI, jour_MEPP_INTERNET, jour_MEPP_INTRADEF, color1,Statut_PAPI);
             //cercle vert
-            item.drawCircleMEP(g, i, jour_d, jour_Demande_MEP_INTRADEF, color2);
-            item.drawCircleMEP(g, i, jour_d, jour_Demande_MEP_INTERNET ,jour_Demande_MEP_INTRADEF , color2);
-            item.drawCircleMEP(g, i,jour_d,  jour_Demande_MEP_PAPI, jour_Demande_MEP_INTRADEF, jour_Demande_MEP_INTERNET, color2);
+            item.drawCircleMEP(g, i, jour_d, jour_Demande_MEP_INTRADEF, color2, Statut_INTRADEF);
+            item.drawCircleMEP(g, i, jour_d, jour_Demande_MEP_INTERNET ,jour_Demande_MEP_INTRADEF , color2,Statut_INTERNET);
+            item.drawCircleMEP(g, i,jour_d,  jour_Demande_MEP_PAPI, jour_Demande_MEP_INTRADEF, jour_Demande_MEP_INTERNET, color2,Statut_PAPI);
 
             item.drawTriangleMEP(g, i, jour_d, jour_MEP_INTRADEF, color2, Statut_INTRADEF);
             item.drawTriangleMEP(g, i, jour_d, jour_MEP_INTERNET ,jour_MEPP_INTRADEF, color2, Statut_INTERNET);
@@ -136,8 +136,8 @@ public class Tableau {
         drawNumWeeks(g, nombre_jour_afficher, jour_d);
         System.out.println("MEP INTRADEF  " + jour_MEP_INTRADEF);
         System.out.println("Statut INtra  " + Statut_INTRADEF);
-        System.out.println("Statut INter " + Statut_INTERNET);
-        System.out.println("Statut  papo" + Statut_PAPI);
+        System.out.println("Statut INTRENET  " + Statut_INTERNET);
+        System.out.println("Statut INTRENET  " + Statut_PAPI);
         item.drawLigneCircleMEPP(g, Color.blue, nombre_jour_afficher * TAILLE_JOUR);
         item.drawLigneCircleMEP(g, (new Color(5,100,0)), nombre_jour_afficher*TAILLE_JOUR);
         

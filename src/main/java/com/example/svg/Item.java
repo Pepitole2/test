@@ -16,12 +16,23 @@ public class Item {
     private int MARGE_GAUCHE;
     private int HAUTEUR_LIGNE;
     private Triangle triangle=new Triangle();       
-    private int test=0;
-    private List<Integer> ligne_INTRADEF_x1=new ArrayList<Integer>();
-    private List<Integer> ligne_INTRADEF_y1=new ArrayList<Integer>();
 
-    private List<Integer> ligne_INTRADEF_x1_MEP = new ArrayList<Integer>();
-    private List<Integer> ligne_INTRADEF_y1_MEP = new ArrayList<Integer>();
+
+
+    private List<Integer> ligne_INTRADEF_x1_MEPP_URGENT = new ArrayList<Integer>();
+    private List<Integer> ligne_INTRADEF_y1_MEPP_URGENT = new ArrayList<Integer>();
+    private List<Integer> ligne_INTRADEF_x1_MEPP_CONFIRME = new ArrayList<Integer>();
+    private List<Integer> ligne_INTRADEF_y1_MEPP_CONFIRME = new ArrayList<Integer>();
+    private List<Integer> ligne_INTRADEF_x1_MEPP_PARDEFAULT = new ArrayList<Integer>();
+    private List<Integer> ligne_INTRADEF_y1_MEPP_PARDEFAULT = new ArrayList<Integer>();
+
+    private List<Integer> ligne_INTRADEF_x1_MEP_URGENT = new ArrayList<Integer>();
+    private List<Integer> ligne_INTRADEF_y1_MEP_URGENT = new ArrayList<Integer>();
+    private List<Integer> ligne_INTRADEF_x1_MEP_CONFIRME = new ArrayList<Integer>();
+    private List<Integer> ligne_INTRADEF_y1_MEP_CONFIRME = new ArrayList<Integer>();
+    private List<Integer> ligne_INTRADEF_x1_MEP_PARDEFAULT = new ArrayList<Integer>();
+    private List<Integer> ligne_INTRADEF_y1_MEP_PARDEFAULT = new ArrayList<Integer>();
+    
 
     public Item(int TAILLE_JOUR,int ORIGINE_DESSIN_X,int ORIGINE_DESSIN_Y,int MARGE_GAUCHE,int HAUTEUR_LIGNE)
     {
@@ -37,100 +48,63 @@ public class Item {
         //A CODER TA FINIT LA HIER
     }
 
-    public void ligne(Graphics2D g, Color color,int x1,int y1,int x2,int y2)
+    public void ligne(Graphics2D g, Color color, List<Integer> ligne_x, List<Integer> ligne_y)
     {
-        g.setColor(color);
-        g.drawLine(x1,y1,x2,y2);
-        g.setColor(Color.black);
+        for (int y = 0; y < ligne_y.size(); y++) 
+        {
+            for (int a = y + 1; a < ligne_y.size(); a++)
+            {
+                if (ligne_y.get(y).equals(ligne_y.get(a))) 
+                {
+                    g.setColor(color);
+                    g.drawLine(ligne_x.get(y) + TAILLE_ITEM / 2, ligne_y.get(y) + TAILLE_ITEM / 2,ligne_x.get(a) + TAILLE_ITEM / 2, ligne_y.get(a) + TAILLE_ITEM / 2);
+                    g.setColor(Color.black);
+                }
+            }
+        }
     }
 
 
     public void drawLigneCircleMEPP(Graphics2D g,Color color, int tab)
     {
-    List<Integer> liste_testx1= new ArrayList<Integer>(ligne_INTRADEF_x1);
-    List<Integer> liste_testy1= new ArrayList<Integer>(ligne_INTRADEF_y1); // on clone les liste affin de détecter qu'elle point na pas son binôme
 
-    
-    for (int y = 0; y < ligne_INTRADEF_y1_MEP.size(); y++) {
-        for (int a = y + 1; a < ligne_INTRADEF_y1.size(); a++) {
-            if (ligne_INTRADEF_y1.get(y).equals(ligne_INTRADEF_y1.get(a))) {
-                g.setColor(color);
-                g.drawLine(ligne_INTRADEF_x1.get(y) + TAILLE_ITEM / 2,
-                        ligne_INTRADEF_y1.get(y) + TAILLE_ITEM / 2, ligne_INTRADEF_x1.get(a) + TAILLE_ITEM / 2,
-                        ligne_INTRADEF_y1.get(a) + TAILLE_ITEM / 2);
-                g.setColor(Color.black);
-                liste_testx1.remove (ligne_INTRADEF_x1.get(a));
-                liste_testx1.remove(ligne_INTRADEF_x1.get(y));
-                liste_testy1.remove(ligne_INTRADEF_y1.get(a));
-                liste_testy1.remove(ligne_INTRADEF_y1.get(y));
-            }
-                
-        }
+        System.out.println("MEP URGENT X " + ligne_INTRADEF_x1_MEPP_URGENT);
+        System.out.println("MEP URGENT Y  " + ligne_INTRADEF_y1_MEPP_URGENT);
+        System.out.println("MEP CONFIRME X " + ligne_INTRADEF_x1_MEPP_CONFIRME);
+        System.out.println("MEP CONFIRME Y  " + ligne_INTRADEF_y1_MEPP_CONFIRME);
+        System.out.println("MEP PARDEFAULT " + ligne_INTRADEF_x1_MEPP_PARDEFAULT);
+        System.out.println("MEP PARDEFAULT Y  " + ligne_INTRADEF_y1_MEPP_PARDEFAULT);
+        System.out.println("");
         
-    }
-    for (int i = 0; i < liste_testx1.size(); i++)// Si l'un des deux cercle n'est pas dessiner , on prolonge le trait
-                                                 // jusqu'a la marge
-    {
-        g.setColor(color);
-        g.drawLine(MARGE_GAUCHE + 24, liste_testy1.get(i) + TAILLE_ITEM / 2, liste_testx1.get(i) + TAILLE_ITEM / 2,
-                liste_testy1.get(i) + TAILLE_ITEM / 2);
-        g.setColor(Color.black);
-    }   
+    ligne(g, Color.blue, ligne_INTRADEF_x1_MEPP_URGENT, ligne_INTRADEF_y1_MEPP_URGENT);
+    ligne(g, Color.blue, ligne_INTRADEF_x1_MEPP_CONFIRME, ligne_INTRADEF_y1_MEPP_CONFIRME);
+    //creation des lignes en pointillé
+    Graphics2D g2d = (Graphics2D) g.create();
+    Stroke dashed = new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[] { 4 }, 0);
+    g2d.setStroke(dashed);
+    ligne(g2d, Color.blue, ligne_INTRADEF_x1_MEPP_PARDEFAULT, ligne_INTRADEF_y1_MEPP_PARDEFAULT);
+
     
 }
 
 //_____________________________________________________________________________________________________
 
-    public void drawLigneCircleMEP(Graphics2D g, Color color, int tab) {
-        List<Integer> liste_testx1 = new ArrayList<Integer>(ligne_INTRADEF_x1_MEP);
-        List<Integer> liste_testy1 = new ArrayList<Integer>(ligne_INTRADEF_y1_MEP);
-        for (int y = 0; y < ligne_INTRADEF_y1_MEP.size(); y++) {
-            for (int a = y + 1; a < ligne_INTRADEF_y1_MEP.size(); a++) {
-                if (ligne_INTRADEF_y1_MEP.get(y).equals(ligne_INTRADEF_y1_MEP.get(a))) {
-                    g.setColor(color);
-                    g.drawLine(ligne_INTRADEF_x1_MEP.get(y) + TAILLE_ITEM / 2, ligne_INTRADEF_y1_MEP.get(y) + TAILLE_ITEM / 2,
-                            ligne_INTRADEF_x1_MEP.get(a) + TAILLE_ITEM / 2, ligne_INTRADEF_y1_MEP.get(a) + TAILLE_ITEM / 2);
-                    g.setColor(Color.black);
-                    liste_testx1.remove(ligne_INTRADEF_x1_MEP.get(a));
-                    liste_testx1.remove(ligne_INTRADEF_x1_MEP.get(y));
-                    liste_testy1.remove(ligne_INTRADEF_y1_MEP.get(a));
-                    liste_testy1.remove(ligne_INTRADEF_y1_MEP.get(y));
-                }
-            }
-        }
-    
-        System.out.println(liste_testy1);
-        List<Integer> testy1 = new ArrayList<Integer>(liste_testy1);   //On copi les listes 
-        List<Integer> testx1 = new ArrayList<Integer>(liste_testx1);
-        List<Integer> liste_test_y2 = new ArrayList<Integer>(testy1);
-        List<Integer> liste_test_x2 = new ArrayList<Integer>(testx1);
-        for (int i = 0; i < testy1.size(); i++)// Si l'un des deux cercle n'est pas dessiner , on prolonge le trait jusqu'a la marge
-        {                                           //si la marge l aplus proche est a gauche
-            for(int a=0;a<ligne_INTRADEF_y1.size();a++)
-            {
-                if(testy1.get(i).equals(ligne_INTRADEF_y1.get(a)))
-                {
-                    g.setColor(color);
-                    g.drawLine(tab+ MARGE_GAUCHE+ 24, liste_testy1.get(i) + TAILLE_ITEM / 2, liste_testx1.get(i) + TAILLE_ITEM / 2,
-                    liste_testy1.get(i) + TAILLE_ITEM / 2);
-                    g.setColor(Color.black);
-                    liste_test_y2.remove(ligne_INTRADEF_y1.get(a));
-                }
+    public void drawLigneCircleMEP(Graphics2D g, Color color, int tab) 
+    {
 
-            }
-        }
-        if(liste_test_y2.size()>1)//si la marge la plus proche et a droite
-        {
-            for (int i = 0; i < liste_test_y2.size(); i++)
-            {
-                g.setColor(color);
-                g.drawLine(MARGE_GAUCHE + 24, liste_test_y2.get(i) + TAILLE_ITEM / 2,
-                        liste_test_x2.get(i) + TAILLE_ITEM / 2, liste_test_y2.get(i) + TAILLE_ITEM / 2);
-                g.setColor(Color.black);
-            }
-        }
-            
-        
+        System.out.println("MEP URGENT X " + ligne_INTRADEF_x1_MEP_URGENT);
+        System.out.println("MEP URGENT Y  " + ligne_INTRADEF_y1_MEP_URGENT);
+        System.out.println("MEP CONFIRME X " + ligne_INTRADEF_x1_MEP_CONFIRME);
+        System.out.println("MEP CONFIRME Y  " + ligne_INTRADEF_y1_MEP_CONFIRME);
+        System.out.println("MEP PARDEFAULT X " + ligne_INTRADEF_x1_MEP_PARDEFAULT);
+        System.out.println("MEP PARDEFAULT Y  " + ligne_INTRADEF_y1_MEP_PARDEFAULT);
+
+        ligne(g, color, ligne_INTRADEF_x1_MEP_URGENT, ligne_INTRADEF_y1_MEP_URGENT);
+        ligne(g, color, ligne_INTRADEF_x1_MEP_CONFIRME, ligne_INTRADEF_y1_MEP_CONFIRME);
+        Graphics2D g2d = (Graphics2D) g.create();
+        Stroke dashed = new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[] { 4 }, 0);
+        g2d.setStroke(dashed);
+        ligne(g2d, color, ligne_INTRADEF_x1_MEP_PARDEFAULT, ligne_INTRADEF_y1_MEP_PARDEFAULT);
     }
 
     
@@ -138,206 +112,387 @@ public class Item {
 
 //-----------------------Methode_DrawCircle-Surcharé-------------------------------
 //elle transette au les cordonnées pour afficher les lignes entre les cercle
-    public void drawCircleMEPP(Graphics2D g, int i,int jour_d, List<Integer> jour_affichage, Color color) {
-        for (int a = 0; a < jour_affichage.size(); a++) {
-          
-            if (i == jour_affichage.get(a)) {
+    public void drawCircleMEPP(Graphics2D g, int i,int jour_d, List<Integer> jour_affichage, Color color,ArrayList<String> Statut_INTRADEF) 
+    {
+        for (int a = 0; a < jour_affichage.size(); a++) 
+        {
+        if (i == jour_affichage.get(a)) 
+        {
+            if(Statut_INTRADEF.get(a).equals("URGENT") && jour_affichage.get(a)==i)
+            {
                 Shape circle = new Ellipse2D.Double(MARGE_GAUCHE - 6 + ((i-jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
-                        ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM, TAILLE_ITEM, TAILLE_ITEM);
-                g.setPaint(color);
+                ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM, TAILLE_ITEM, TAILLE_ITEM);
+                g.setPaint(Color.blue);
                 g.fill(circle);
                 g.setColor(Color.BLACK);
-                ligne_INTRADEF_x1.add((MARGE_GAUCHE - 6 + ((i-jour_d)* TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
-                ligne_INTRADEF_y1.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
-            
-            }
+                ligne_INTRADEF_x1_MEPP_URGENT.add((MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
+                ligne_INTRADEF_y1_MEPP_URGENT.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
 
-        }
+            }
+           else if(Statut_INTRADEF.get(a).equals("CONFIRME") && jour_affichage.get(a)==i)
+           {
+               Shape circle = new Ellipse2D.Double(
+                       MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+                       ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM, TAILLE_ITEM, TAILLE_ITEM);
+               g.setPaint(Color.blue);
+               g.fill(circle);
+               g.setColor(Color.BLACK);
+               ligne_INTRADEF_x1_MEPP_CONFIRME
+                       .add((MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
+               ligne_INTRADEF_y1_MEPP_CONFIRME.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
+           }
+           else
+           {
+               Shape circle = new Ellipse2D.Double(
+                       MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+                       ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM, TAILLE_ITEM, TAILLE_ITEM);
+               g.setPaint(color);
+               g.fill(circle);
+               g.setColor(Color.BLACK);
+               ligne_INTRADEF_x1_MEPP_PARDEFAULT
+                       .add((MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
+               ligne_INTRADEF_y1_MEPP_PARDEFAULT.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
+           }
+       }
+
+    }
     }
 
 
 
-    public void drawCircleMEPP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage,List<Integer> jour_affichage2,Color color) {
+    public void drawCircleMEPP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage,List<Integer> jour_affichage2,Color color,ArrayList<String> Statut_INTERNET) {
         for (int a = 0; a < jour_affichage.size(); a++) {
             if (i == jour_affichage.get(a)) {
-                Shape circle = new Ellipse2D.Double(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
-                        ORIGINE_DESSIN_Y + ((a+jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM, 
-                        TAILLE_ITEM, TAILLE_ITEM);
-                g.setPaint(color);
-                g.fill(circle);
-                g.setColor(Color.BLACK);
-                ligne_INTRADEF_x1.add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
-                ligne_INTRADEF_y1.add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+                if(Statut_INTERNET.get(a).equals("URGENT") && jour_affichage.get(a)==i)
+                {
+                    Shape circle = new Ellipse2D.Double(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+                    ORIGINE_DESSIN_Y + ((a+jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM, 
+                    TAILLE_ITEM, TAILLE_ITEM);
+                    g.setPaint(color);
+                    g.fill(circle);
+                    g.setColor(Color.BLACK);
+                    ligne_INTRADEF_x1_MEPP_URGENT.add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                    ligne_INTRADEF_y1_MEPP_URGENT.add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+                }
+                else if(Statut_INTERNET.get(a).equals("CONFIRME") && jour_affichage.get(a)==i)
+                {
+                    Shape circle = new Ellipse2D.Double(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+                    ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM,
+                    TAILLE_ITEM, TAILLE_ITEM);
+                    g.setPaint(color);
+                    g.fill(circle);
+                    g.setColor(Color.BLACK);
+                    ligne_INTRADEF_x1_MEPP_CONFIRME.add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                    ligne_INTRADEF_y1_MEPP_CONFIRME.add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+                }
+                else
+                {
+                    Shape circle = new Ellipse2D.Double(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+                    ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM,
+                    TAILLE_ITEM, TAILLE_ITEM);
+                    g.setPaint(color);
+                    g.fill(circle);
+                    g.setColor(Color.BLACK);
+                    ligne_INTRADEF_x1_MEPP_PARDEFAULT.add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                    ligne_INTRADEF_y1_MEPP_PARDEFAULT.add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+                }
+               
             }
         }
     }
 
     public void drawCircleMEPP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage, List<Integer> jour_affichage2,List<Integer> jour_affichage3,
-            Color color) {
-        for (int a = 0; a < jour_affichage.size(); a++) {
-            if (i == jour_affichage.get(a)) {
-                Shape circle = new Ellipse2D.Double(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+            Color color, ArrayList<String> Statut_PAPI) {
+        for (int a = 0; a < jour_affichage.size(); a++) 
+        {
+            if (i == jour_affichage.get(a)) 
+            {
+                if(Statut_PAPI.get(a).equals("URGENT") && jour_affichage.get(a)==i)
+                {
+                    Shape circle = new Ellipse2D.Double(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
                         ORIGINE_DESSIN_Y + ((a +jour_affichage2.size()+jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM, TAILLE_ITEM, TAILLE_ITEM);
-                g.setPaint(color);
-                g.fill(circle);
-                g.setColor(Color.BLACK);
-                ligne_INTRADEF_x1.add(MARGE_GAUCHE - 6 + ((i - jour_d)* TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
-                ligne_INTRADEF_y1.add(ORIGINE_DESSIN_Y
-                        + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+                    g.setPaint(color);
+                    g.fill(circle);
+                    g.setColor(Color.BLACK);
+                    ligne_INTRADEF_x1_MEPP_URGENT.add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                    ligne_INTRADEF_y1_MEPP_URGENT.add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+                }
+                else if(Statut_PAPI.get(a).equals("CONFIRME") && jour_affichage.get(a)==i)
+                {
+                    Shape circle = new Ellipse2D.Double(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+                            ORIGINE_DESSIN_Y + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE)- TAILLE_ITEM,TAILLE_ITEM, TAILLE_ITEM);
+                    g.setPaint(color);
+                    g.fill(circle);
+                    g.setColor(Color.BLACK);
+                    ligne_INTRADEF_x1_MEPP_CONFIRME.add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                    ligne_INTRADEF_y1_MEPP_CONFIRME.add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+                }
+                else
+                {
+                    Shape circle = new Ellipse2D.Double(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+                            ORIGINE_DESSIN_Y + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE)- TAILLE_ITEM,TAILLE_ITEM, TAILLE_ITEM);
+                    g.setPaint(color);
+                    g.fill(circle);
+                    g.setColor(Color.BLACK);
+                    ligne_INTRADEF_x1_MEPP_PARDEFAULT.add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                    ligne_INTRADEF_y1_MEPP_PARDEFAULT.add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+                }
+                
             }
         }
     }
 
-    //encore de la surcharge
+//___________________________________________________________Draw_Circle_MEP_______________________________________________________
 
-    public void drawCircleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage, Color color) {
-        for (int a = 0; a < jour_affichage.size(); a++) {
-
-            if (i == jour_affichage.get(a)) {
-
-                Shape circle = new Ellipse2D.Double(
-                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+    public void drawCircleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage, Color color,
+        ArrayList<String> Statut_INTRADEF) {
+    for (int a = 0; a < jour_affichage.size(); a++) {
+        if (i == jour_affichage.get(a)) {
+            if (Statut_INTRADEF.get(a).equals("URGENT") && jour_affichage.get(a) == i) {
+                Shape circle = new Ellipse2D.Double(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
                         ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM, TAILLE_ITEM, TAILLE_ITEM);
                 g.setPaint(color);
                 g.fill(circle);
                 g.setColor(Color.BLACK);
-                ligne_INTRADEF_x1_MEP
-                        .add((MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
-                ligne_INTRADEF_y1_MEP.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
+                ligne_INTRADEF_x1_MEP_URGENT.add((MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
+                ligne_INTRADEF_y1_MEP_URGENT.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
 
+            } else if (Statut_INTRADEF.get(a).equals("CONFIRME") && jour_affichage.get(a) == i) {
+                Shape circle = new Ellipse2D.Double(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+                        ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM, TAILLE_ITEM, TAILLE_ITEM);
+                g.setPaint(color);
+                g.fill(circle);
+                g.setColor(Color.BLACK);
+                ligne_INTRADEF_x1_MEP_CONFIRME.add((MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
+                ligne_INTRADEF_y1_MEP_CONFIRME.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
+            } else {
+                Shape circle = new Ellipse2D.Double(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+                        ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM, TAILLE_ITEM, TAILLE_ITEM);
+                g.setPaint(color);
+                g.fill(circle);
+                g.setColor(Color.BLACK);
+                ligne_INTRADEF_x1_MEP_PARDEFAULT.add((MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
+                ligne_INTRADEF_y1_MEP_PARDEFAULT.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
+            }
+        }
+
+    }
+}
+
+
+    public void drawCircleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage, List<Integer> jour_affichage2,
+        Color color, ArrayList<String> Statut_INTERNET) {
+    for (int a = 0; a < jour_affichage.size(); a++) {
+        if (i == jour_affichage.get(a)) {
+            if (Statut_INTERNET.get(a).equals("URGENT") && jour_affichage.get(a) == i) {
+                Shape circle = new Ellipse2D.Double(
+                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+                        ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM, TAILLE_ITEM,
+                        TAILLE_ITEM);
+                g.setPaint(color);
+                g.fill(circle);
+                g.setColor(Color.BLACK);
+                ligne_INTRADEF_x1_MEP_URGENT
+                        .add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                ligne_INTRADEF_y1_MEP_URGENT
+                        .add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+            } else if (Statut_INTERNET.get(a).equals("CONFIRME") && jour_affichage.get(a) == i) {
+                Shape circle = new Ellipse2D.Double(
+                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+                        ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM, TAILLE_ITEM,
+                        TAILLE_ITEM);
+                g.setPaint(color);
+                g.fill(circle);
+                g.setColor(Color.BLACK);
+                ligne_INTRADEF_x1_MEP_CONFIRME
+                        .add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                ligne_INTRADEF_y1_MEP_CONFIRME
+                        .add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+            } else {
+                Shape circle = new Ellipse2D.Double(
+                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+                        ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM, TAILLE_ITEM,
+                        TAILLE_ITEM);
+                g.setPaint(color);
+                g.fill(circle);
+                g.setColor(Color.BLACK);
+                ligne_INTRADEF_x1_MEP_PARDEFAULT
+                        .add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                ligne_INTRADEF_y1_MEP_PARDEFAULT
+                        .add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
             }
 
         }
     }
+}
 
-
-    public void drawCircleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage,List<Integer> jour_affichage2,Color color) {
-        for (int a = 0; a < jour_affichage.size(); a++) {
-            if (i == jour_affichage.get(a)) {
-                Shape circle = new Ellipse2D.Double(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
-                        ORIGINE_DESSIN_Y + ((a+jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM, 
+public void drawCircleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage, List<Integer> jour_affichage2,
+        List<Integer> jour_affichage3, Color color, ArrayList<String> Statut_PAPI) {
+    for (int a = 0; a < jour_affichage.size(); a++) {
+        if (i == jour_affichage.get(a)) {
+            if (Statut_PAPI.get(a).equals("URGENT") && jour_affichage.get(a) == i) {
+                Shape circle = new Ellipse2D.Double(
+                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+                        ORIGINE_DESSIN_Y + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE)
+                                - TAILLE_ITEM,
                         TAILLE_ITEM, TAILLE_ITEM);
                 g.setPaint(color);
                 g.fill(circle);
                 g.setColor(Color.BLACK);
-                ligne_INTRADEF_x1_MEP.add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
-                ligne_INTRADEF_y1_MEP.add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
-            }
-        }
-    }
-
-    public void drawCircleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage, List<Integer> jour_affichage2,List<Integer> jour_affichage3,
-            Color color) {
-        for (int a = 0; a < jour_affichage.size(); a++) {
-            if (i == jour_affichage.get(a)) {
-                Shape circle = new Ellipse2D.Double(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
-                        ORIGINE_DESSIN_Y + ((a +jour_affichage2.size()+jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM, TAILLE_ITEM, TAILLE_ITEM);
+                ligne_INTRADEF_x1_MEP_URGENT.add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                ligne_INTRADEF_y1_MEP_URGENT.add(ORIGINE_DESSIN_Y+ ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+            } else if (Statut_PAPI.get(a).equals("CONFIRME") && jour_affichage.get(a) == i) {
+                Shape circle = new Ellipse2D.Double(
+                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+                        ORIGINE_DESSIN_Y + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE)
+                                - TAILLE_ITEM,
+                        TAILLE_ITEM, TAILLE_ITEM);
                 g.setPaint(color);
                 g.fill(circle);
                 g.setColor(Color.BLACK);
-                ligne_INTRADEF_x1_MEP.add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
-                ligne_INTRADEF_y1_MEP.add(ORIGINE_DESSIN_Y
-                        + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+                ligne_INTRADEF_x1_MEP_CONFIRME.add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                ligne_INTRADEF_y1_MEP_CONFIRME.add(ORIGINE_DESSIN_Y+ ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+            } else {
+                Shape circle = new Ellipse2D.Double(
+                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+                        ORIGINE_DESSIN_Y + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE)- TAILLE_ITEM, TAILLE_ITEM, TAILLE_ITEM);
+                g.setPaint(color);
+                g.fill(circle);
+                g.setColor(Color.BLACK);
+                ligne_INTRADEF_x1_MEP_PARDEFAULT.add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                ligne_INTRADEF_y1_MEP_PARDEFAULT.add(ORIGINE_DESSIN_Y+ ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
             }
+
         }
     }
+}
+
+
+
+
+
 
     //-------------------draw--------------------triangle-----------------------------------
 
     public void drawTriangleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage, Color color,
             ArrayList<String> Statut_INTRADEF) 
     {
-    for (int a = 0; a < jour_affichage.size(); a++) {
-           
-            if (i == jour_affichage.get(a)) //ICI REVOIR 
+    for (int a = 0; a < jour_affichage.size(); a++) 
+    {
+        if (i == jour_affichage.get(a))
             {
-            
             if(Statut_INTRADEF.get(a).equals("URGENT") && jour_affichage.get(a)==i)
                     {
                         triangle.drawMe(g, color,Color.red,
                              MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
                              ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM * 2 - 3);
-                        ligne_INTRADEF_x1_MEP.add((MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
-                        ligne_INTRADEF_y1_MEP.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
+                        ligne_INTRADEF_x1_MEP_URGENT.add((MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
+                        ligne_INTRADEF_y1_MEP_URGENT.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
                     }
-                    else
+            else if (Statut_INTRADEF.get(a).equals("CONFIRME") && jour_affichage.get(a)==i)
                     {
                         triangle.drawMe(
                                 g, color, color, MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X
                                         - TAILLE_ITEM / 2 + 10,
                                 ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM * 2 - 3);
-                        ligne_INTRADEF_x1_MEP.add(
+                        ligne_INTRADEF_x1_MEP_CONFIRME.add(
                                 (MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
-                        ligne_INTRADEF_y1_MEP.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
+                        ligne_INTRADEF_y1_MEP_CONFIRME.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
                     }
-
+            else
+             {
+                triangle.drawMe(g, color, color,
+                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
+                        ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM * 2 - 3);
+                ligne_INTRADEF_x1_MEP_PARDEFAULT
+                        .add((MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
+                ligne_INTRADEF_y1_MEP_PARDEFAULT.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
             }
-
         }
     }
+}
 
 
     public void drawTriangleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage,
-            List<Integer> jour_affichage2, Color color, ArrayList<String> Statut_INTRADEF) 
+            List<Integer> jour_affichage2, Color color, ArrayList<String> Statut_INTERNET) 
     {
         for (int a = 0; a < jour_affichage.size(); a++) {
             if (i == jour_affichage.get(a)) 
             {
-             if(Statut_INTRADEF.get(a).equals("URGENT") && jour_affichage.get(a)==i)
+             if(Statut_INTERNET.get(a).equals("URGENT") && jour_affichage.get(a)==i)
              {
                 triangle.drawMe(g, color,Color.RED,
                         MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
                         ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM * 2 - 3);
-                ligne_INTRADEF_x1_MEP
+                ligne_INTRADEF_x1_MEP_URGENT
                         .add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
-                ligne_INTRADEF_y1_MEP
+                ligne_INTRADEF_y1_MEP_URGENT
                         .add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
             }
-            else
+            else if (Statut_INTERNET.get(a).equals("CONFIRME") && jour_affichage.get(a) == i)
             {
             triangle.drawMe(g, color,color,
                         MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
                         ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM * 2 - 3);
-                ligne_INTRADEF_x1_MEP
+                ligne_INTRADEF_x1_MEP_CONFIRME
                         .add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
-                ligne_INTRADEF_y1_MEP
+                ligne_INTRADEF_y1_MEP_CONFIRME
                         .add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
-            
-            
+            }
+            else
+            {
+                triangle.drawMe(g, color, color,
+                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
+                        ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM * 2 - 3);
+                ligne_INTRADEF_x1_MEP_PARDEFAULT
+                        .add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                ligne_INTRADEF_y1_MEP_PARDEFAULT
+                        .add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
             }
         }
     }}
 
     public void drawTriangleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage,
             List<Integer> jour_affichage2, List<Integer> jour_affichage3, Color color,
-            ArrayList<String> Statut_INTRADEF) {
+            ArrayList<String> Statut_PAPI) {
         for (int a = 0; a < jour_affichage.size(); a++) {
             if (i == jour_affichage.get(a)) 
             {
-            if(Statut_INTRADEF.get(a).equals("URGENT") && jour_affichage.get(a)==i)
+            if(Statut_PAPI.get(a).equals("URGENT") && jour_affichage.get(a)==i)
              {
                 triangle.drawMe(g, color,Color.red,
                         MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
                         ORIGINE_DESSIN_Y + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE)
                                 - TAILLE_ITEM*2 - 3);
-                ligne_INTRADEF_x1_MEP
+                ligne_INTRADEF_x1_MEP_URGENT
                         .add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
-                ligne_INTRADEF_y1_MEP.add(ORIGINE_DESSIN_Y
+                ligne_INTRADEF_y1_MEP_URGENT.add(ORIGINE_DESSIN_Y
                         + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
             }
-            else
+            else if (Statut_PAPI.get(a).equals("CONFIRME") && jour_affichage.get(a) == i)
             {
                 triangle.drawMe(g, color,color,
                         MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
                         ORIGINE_DESSIN_Y + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE)
                                 - TAILLE_ITEM*2 - 3);
-                ligne_INTRADEF_x1_MEP
+                ligne_INTRADEF_x1_MEP_CONFIRME
                         .add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
-                ligne_INTRADEF_y1_MEP.add(ORIGINE_DESSIN_Y
+                ligne_INTRADEF_y1_MEP_CONFIRME.add(ORIGINE_DESSIN_Y
                         + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);   
             }
-        }}
+            else
+            {
+                triangle.drawMe(g, color, color,
+                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
+                        ORIGINE_DESSIN_Y + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE)
+                                - TAILLE_ITEM * 2 - 3);
+                ligne_INTRADEF_x1_MEP_PARDEFAULT.add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                ligne_INTRADEF_y1_MEP_PARDEFAULT.add(ORIGINE_DESSIN_Y+ ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+            }
+        }
     }
+    
+}
 
 
 
