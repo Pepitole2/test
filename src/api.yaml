@@ -112,7 +112,7 @@
         dateEffectiveMEPP: 
         datePrévueDemandeMEP: 15/05/2021
         dateEffectiveDemandeMEP:
-        datePrévueMEP: 08/06/2021
+        datePrévueMEP: 01/06/2021
         dateEffectiveMEP:
         dateGoOfficielProd: 
         délaiPourMep: 
@@ -306,7 +306,7 @@
         prioritéDGNUM: 
         version: V3
         nbAPI: 2
-        statutPlanification: PAR_DEFAULT
+        statutPlanification: URGENT
         etatAPI: APIStat
         datePremierEnvoi: 
         dateDernierEnvoiSwager: 

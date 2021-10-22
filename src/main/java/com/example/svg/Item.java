@@ -15,8 +15,8 @@ public class Item {
     private int ORIGINE_DESSIN_Y;
     private int MARGE_GAUCHE;
     private int HAUTEUR_LIGNE;
-    private Triangle triangle=new Triangle();
-
+    private Triangle triangle=new Triangle();       
+    private int test=0;
     private List<Integer> ligne_INTRADEF_x1=new ArrayList<Integer>();
     private List<Integer> ligne_INTRADEF_y1=new ArrayList<Integer>();
 
@@ -244,17 +244,32 @@ public class Item {
 
     //-------------------draw--------------------triangle-----------------------------------
 
-    public void drawTriangleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage, Color color) {
-        for (int a = 0; a < jour_affichage.size(); a++) {
-
-            if (i == jour_affichage.get(a)) {
-
-                triangle.drawMe(g, color,
-                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
-                        ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM * 2 - 3);
-                ligne_INTRADEF_x1_MEP
-                        .add((MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
-                ligne_INTRADEF_y1_MEP.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
+    public void drawTriangleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage, Color color,
+            ArrayList<String> Statut_INTRADEF) 
+    {
+    for (int a = 0; a < jour_affichage.size(); a++) {
+           
+            if (i == jour_affichage.get(a)) //ICI REVOIR 
+            {
+            
+            if(Statut_INTRADEF.get(a).equals("URGENT") && jour_affichage.get(a)==i)
+                    {
+                        triangle.drawMe(g, color,Color.red,
+                             MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
+                             ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM * 2 - 3);
+                        ligne_INTRADEF_x1_MEP.add((MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
+                        ligne_INTRADEF_y1_MEP.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
+                    }
+                    else
+                    {
+                        triangle.drawMe(
+                                g, color, color, MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X
+                                        - TAILLE_ITEM / 2 + 10,
+                                ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM * 2 - 3);
+                        ligne_INTRADEF_x1_MEP.add(
+                                (MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
+                        ligne_INTRADEF_y1_MEP.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
+                    }
 
             }
 
@@ -263,10 +278,14 @@ public class Item {
 
 
     public void drawTriangleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage,
-            List<Integer> jour_affichage2, Color color) {
+            List<Integer> jour_affichage2, Color color, ArrayList<String> Statut_INTRADEF) 
+    {
         for (int a = 0; a < jour_affichage.size(); a++) {
-            if (i == jour_affichage.get(a)) {
-                triangle.drawMe(g, color,
+            if (i == jour_affichage.get(a)) 
+            {
+             if(Statut_INTRADEF.get(a).equals("URGENT") && jour_affichage.get(a)==i)
+             {
+                triangle.drawMe(g, color,Color.RED,
                         MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
                         ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM * 2 - 3);
                 ligne_INTRADEF_x1_MEP
@@ -274,14 +293,30 @@ public class Item {
                 ligne_INTRADEF_y1_MEP
                         .add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
             }
+            else
+            {
+            triangle.drawMe(g, color,color,
+                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
+                        ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM * 2 - 3);
+                ligne_INTRADEF_x1_MEP
+                        .add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                ligne_INTRADEF_y1_MEP
+                        .add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+            
+            
+            }
         }
-    }
+    }}
 
     public void drawTriangleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage,
-            List<Integer> jour_affichage2, List<Integer> jour_affichage3, Color color) {
+            List<Integer> jour_affichage2, List<Integer> jour_affichage3, Color color,
+            ArrayList<String> Statut_INTRADEF) {
         for (int a = 0; a < jour_affichage.size(); a++) {
-            if (i == jour_affichage.get(a)) {
-                triangle.drawMe(g, color,
+            if (i == jour_affichage.get(a)) 
+            {
+            if(Statut_INTRADEF.get(a).equals("URGENT") && jour_affichage.get(a)==i)
+             {
+                triangle.drawMe(g, color,Color.red,
                         MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
                         ORIGINE_DESSIN_Y + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE)
                                 - TAILLE_ITEM*2 - 3);
@@ -290,7 +325,18 @@ public class Item {
                 ligne_INTRADEF_y1_MEP.add(ORIGINE_DESSIN_Y
                         + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
             }
-        }
+            else
+            {
+                triangle.drawMe(g, color,color,
+                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
+                        ORIGINE_DESSIN_Y + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE)
+                                - TAILLE_ITEM*2 - 3);
+                ligne_INTRADEF_x1_MEP
+                        .add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                ligne_INTRADEF_y1_MEP.add(ORIGINE_DESSIN_Y
+                        + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);   
+            }
+        }}
     }
 
 

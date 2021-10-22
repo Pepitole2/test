@@ -12,7 +12,7 @@ public class Triangle {
     public Triangle() {
     }
 
-    public void drawMe(Graphics g,Color color,int x,int y) {
+    public void drawMe(Graphics g,Color color ,Color color2,int x,int y) {
     
         g.setColor(color);
         int x4[] = { x, x - 8, x + 8 };
@@ -21,7 +21,7 @@ public class Triangle {
         int x5[] = { x, x - 8, x + 8 };
         int y5[] = { Ax+y, Bx+y, Bx+y };
         g.fillPolygon(x5, y5, 3);
-        g.setColor(Color.red);
+        g.setColor(color2);
 
         int x9[] = { x, x-8, x+8 };
         int y9[] = { Ax+y , 2*Bx+y, 2*Bx+y };

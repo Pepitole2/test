@@ -3,9 +3,6 @@ package com.example.svg;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.print.DocFlavor.STRING;
-
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -127,14 +124,17 @@ public class Tableau {
             item.drawCircleMEP(g, i, jour_d, jour_Demande_MEP_INTRADEF, color2);
             item.drawCircleMEP(g, i, jour_d, jour_Demande_MEP_INTERNET ,jour_Demande_MEP_INTRADEF , color2);
             item.drawCircleMEP(g, i,jour_d,  jour_Demande_MEP_PAPI, jour_Demande_MEP_INTRADEF, jour_Demande_MEP_INTERNET, color2);
-            item.drawTriangleMEP(g, i, jour_d, jour_MEP_INTRADEF, color2);
-            item.drawTriangleMEP(g, i, jour_d, jour_MEP_INTERNET ,jour_MEPP_INTRADEF, color2);
-            item.drawTriangleMEP(g, i, jour_d, jour_MEP_PAPI, jour_MEPP_INTERNET, jour_MEPP_INTRADEF, color2);
+
+            item.drawTriangleMEP(g, i, jour_d, jour_MEP_INTRADEF, color2, Statut_INTRADEF);
+            item.drawTriangleMEP(g, i, jour_d, jour_MEP_INTERNET ,jour_MEPP_INTRADEF, color2, Statut_INTERNET);
+            item.drawTriangleMEP(g, i, jour_d, jour_MEP_PAPI, jour_MEPP_INTERNET, jour_MEPP_INTRADEF, color2,
+                    Statut_PAPI);
     
             
         }
 
         drawNumWeeks(g, nombre_jour_afficher, jour_d);
+        System.out.println("MEP INTRADEF  " + jour_MEP_INTRADEF);
         System.out.println("Statut INtra  " + Statut_INTRADEF);
         System.out.println("Statut INter " + Statut_INTERNET);
         System.out.println("Statut  papo" + Statut_PAPI);
