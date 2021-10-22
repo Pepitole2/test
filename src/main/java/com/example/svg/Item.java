@@ -15,6 +15,7 @@ public class Item {
     private int ORIGINE_DESSIN_Y;
     private int MARGE_GAUCHE;
     private int HAUTEUR_LIGNE;
+    private Triangle triangle=new Triangle();
 
     private List<Integer> ligne_INTRADEF_x1=new ArrayList<Integer>();
     private List<Integer> ligne_INTRADEF_y1=new ArrayList<Integer>();
@@ -189,25 +190,25 @@ public class Item {
 
     //encore de la surcharge
 
-
-     public void drawCircleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage, Color color) {
+    public void drawCircleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage, Color color) {
         for (int a = 0; a < jour_affichage.size(); a++) {
-          
+
             if (i == jour_affichage.get(a)) {
-               
-                Shape circle = new Ellipse2D.Double(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
+
+                Shape circle = new Ellipse2D.Double(
+                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2,
                         ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM, TAILLE_ITEM, TAILLE_ITEM);
                 g.setPaint(color);
                 g.fill(circle);
                 g.setColor(Color.BLACK);
-                ligne_INTRADEF_x1_MEP.add((MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
+                ligne_INTRADEF_x1_MEP
+                        .add((MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
                 ligne_INTRADEF_y1_MEP.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
-            
+
             }
 
         }
     }
-
 
 
     public void drawCircleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage,List<Integer> jour_affichage2,Color color) {
@@ -240,6 +241,61 @@ public class Item {
             }
         }
     }
+
+    //-------------------draw--------------------triangle-----------------------------------
+
+    public void drawTriangleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage, Color color) {
+        for (int a = 0; a < jour_affichage.size(); a++) {
+
+            if (i == jour_affichage.get(a)) {
+
+                triangle.drawMe(g, color,
+                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
+                        ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM * 2 - 3);
+                ligne_INTRADEF_x1_MEP
+                        .add((MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2));
+                ligne_INTRADEF_y1_MEP.add(ORIGINE_DESSIN_Y + (a * HAUTEUR_LIGNE) - TAILLE_ITEM);
+
+            }
+
+        }
+    }
+
+
+    public void drawTriangleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage,
+            List<Integer> jour_affichage2, Color color) {
+        for (int a = 0; a < jour_affichage.size(); a++) {
+            if (i == jour_affichage.get(a)) {
+                triangle.drawMe(g, color,
+                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
+                        ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM * 2 - 3);
+                ligne_INTRADEF_x1_MEP
+                        .add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                ligne_INTRADEF_y1_MEP
+                        .add(ORIGINE_DESSIN_Y + ((a + jour_affichage2.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+            }
+        }
+    }
+
+    public void drawTriangleMEP(Graphics2D g, int i, int jour_d, List<Integer> jour_affichage,
+            List<Integer> jour_affichage2, List<Integer> jour_affichage3, Color color) {
+        for (int a = 0; a < jour_affichage.size(); a++) {
+            if (i == jour_affichage.get(a)) {
+                triangle.drawMe(g, color,
+                        MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2 + 10,
+                        ORIGINE_DESSIN_Y + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE)
+                                - TAILLE_ITEM*2 - 3);
+                ligne_INTRADEF_x1_MEP
+                        .add(MARGE_GAUCHE - 6 + ((i - jour_d) * TAILLE_JOUR) + ORIGINE_DESSIN_X - TAILLE_ITEM / 2);
+                ligne_INTRADEF_y1_MEP.add(ORIGINE_DESSIN_Y
+                        + ((a + jour_affichage2.size() + jour_affichage3.size()) * HAUTEUR_LIGNE) - TAILLE_ITEM);
+            }
+        }
+    }
+
+
+
+
 
     public void drawRectangle(Graphics2D g,int withd,int height,int a,Color color)
     {   

@@ -127,16 +127,17 @@ public class Tableau {
             item.drawCircleMEP(g, i, jour_d, jour_Demande_MEP_INTRADEF, color2);
             item.drawCircleMEP(g, i, jour_d, jour_Demande_MEP_INTERNET ,jour_Demande_MEP_INTRADEF , color2);
             item.drawCircleMEP(g, i,jour_d,  jour_Demande_MEP_PAPI, jour_Demande_MEP_INTRADEF, jour_Demande_MEP_INTERNET, color2);
-            item.drawCircleMEP(g, i, jour_d, jour_MEP_INTRADEF, color2);
-            item.drawCircleMEP(g, i, jour_d, jour_MEP_INTERNET ,jour_MEPP_INTRADEF, color2);
-            item.drawCircleMEP(g, i, jour_d, jour_MEP_PAPI, jour_MEPP_INTERNET, jour_MEPP_INTRADEF, color2);
+            item.drawTriangleMEP(g, i, jour_d, jour_MEP_INTRADEF, color2);
+            item.drawTriangleMEP(g, i, jour_d, jour_MEP_INTERNET ,jour_MEPP_INTRADEF, color2);
+            item.drawTriangleMEP(g, i, jour_d, jour_MEP_PAPI, jour_MEPP_INTERNET, jour_MEPP_INTRADEF, color2);
     
             
         }
 
-        System.out.println("Nombre jour a afficher "+nombre_jour_afficher);
         drawNumWeeks(g, nombre_jour_afficher, jour_d);
-        System.out.println("Statut  " + Statut_INTRADEF);
+        System.out.println("Statut INtra  " + Statut_INTRADEF);
+        System.out.println("Statut INter " + Statut_INTERNET);
+        System.out.println("Statut  papo" + Statut_PAPI);
         item.drawLigneCircleMEPP(g, Color.blue, nombre_jour_afficher * TAILLE_JOUR);
         item.drawLigneCircleMEP(g, (new Color(5,100,0)), nombre_jour_afficher*TAILLE_JOUR);
         

@@ -4,12 +4,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.Image;
-import java.io.File;
-
-
 import javax.swing.*;
-import javax.imageio.ImageIO;
 
 import org.apache.batik.swing.*;
 import org.apache.batik.svggen.*;
@@ -61,6 +56,8 @@ public class Draw extends JPanel {
     private ArrayList<String> Statut_INTRADEF = new ArrayList<String>();
     private ArrayList<String> Statut_INTERNET = new ArrayList<String>();
     private ArrayList<String> Statut_PAPI = new ArrayList<String>();
+
+
 
 
     private int nb_api_to_string=0;
@@ -146,7 +143,11 @@ public class Draw extends JPanel {
                 }
             }
             
+        
         }
+
+      
+
     }
 
     public void paintTitle(Graphics2D g,int nombre_jour_afficher)
@@ -250,11 +251,7 @@ public class Draw extends JPanel {
 
         // Create a converter for this document.
         SVGGraphics2D g = new SVGGraphics2D(doc);
-        
-        Triangle mt = new Triangle(ORIGINE_DESSIN_X,ORIGINE_DESSIN_Y,MARGE_GAUCHE,HAUTEUR_LIGNE);
-        mt.drawMe(g,Color.green,ORIGINE_DESSIN_X,ORIGINE_DESSIN_Y);
 
-  
        
         paintLigneApi(g,api, nb_api_file,nombre_jour_afficher,Color.black);
         paintTitle(g, nombre_jour_afficher);
@@ -277,6 +274,10 @@ public class Draw extends JPanel {
         tab.setJour_MEP_INTRADEF(jour_MEP_INTRADEF);
         tab.setJour_MEP_INTERNET(jour_MEP_INTERNET);
         tab.setJour_MEP_PAPI(jour_MEP_PAPI);
+        //statut
+        tab.setStatut_INTRADEF(Statut_INTRADEF);
+        tab.setStatut_INTERNET(Statut_INTERNET);
+        tab.setStatut_PAPI(Statut_PAPI);
         //Type de ligne en fonction du statut
         tab.setStatut_INTRADEF(Statut_INTRADEF);
         System.out.println(Statut_INTRADEF);
