@@ -54,38 +54,19 @@ public class Item {
 
     public void drawLigneCircleMEPP(Graphics2D g,Color color, int tab)
     {
-
-        System.out.println("MEP URGENT X " + ligne_INTRADEF_x1_MEPP_URGENT);
-        System.out.println("MEP URGENT Y  " + ligne_INTRADEF_y1_MEPP_URGENT);
-        System.out.println("MEP CONFIRME X " + ligne_INTRADEF_x1_MEPP_CONFIRME);
-        System.out.println("MEP CONFIRME Y  " + ligne_INTRADEF_y1_MEPP_CONFIRME);
-        System.out.println("MEP PARDEFAULT " + ligne_INTRADEF_x1_MEPP_PARDEFAULT);
-        System.out.println("MEP PARDEFAULT Y  " + ligne_INTRADEF_y1_MEPP_PARDEFAULT);
-        System.out.println("");
-        
-    lg.ligne(g, Color.blue, ligne_INTRADEF_x1_MEPP_URGENT, ligne_INTRADEF_y1_MEPP_URGENT);
-    lg.ligne(g, Color.blue, ligne_INTRADEF_x1_MEPP_CONFIRME, ligne_INTRADEF_y1_MEPP_CONFIRME);
-    //creation des lignes en pointillé
-    Graphics2D g2d = (Graphics2D) g.create();
-    Stroke dashed = new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[] { 4 }, 0);
-    g2d.setStroke(dashed);
-    lg.ligne(g2d, Color.blue, ligne_INTRADEF_x1_MEPP_PARDEFAULT, ligne_INTRADEF_y1_MEPP_PARDEFAULT);
-
-    
-}
+        lg.ligne(g, Color.blue, ligne_INTRADEF_x1_MEPP_URGENT, ligne_INTRADEF_y1_MEPP_URGENT);
+        lg.ligne(g, Color.blue, ligne_INTRADEF_x1_MEPP_CONFIRME, ligne_INTRADEF_y1_MEPP_CONFIRME);
+        //creation des lignes en pointillé
+        Graphics2D g2d = (Graphics2D) g.create();
+        Stroke dashed = new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[] { 4 }, 0);
+        g2d.setStroke(dashed);
+        lg.ligne(g2d, Color.blue, ligne_INTRADEF_x1_MEPP_PARDEFAULT, ligne_INTRADEF_y1_MEPP_PARDEFAULT);    
+    }
 
 //_____________________________________________________________________________________________________
 
     public void drawLigneCircleMEP(Graphics2D g, Color color, int tab) 
     {
-
-        System.out.println("MEP URGENT X " + ligne_INTRADEF_x1_MEP_URGENT);
-        System.out.println("MEP URGENT Y  " + ligne_INTRADEF_y1_MEP_URGENT);
-        System.out.println("MEP CONFIRME X " + ligne_INTRADEF_x1_MEP_CONFIRME);
-        System.out.println("MEP CONFIRME Y  " + ligne_INTRADEF_y1_MEP_CONFIRME);
-        System.out.println("MEP PARDEFAULT X " + ligne_INTRADEF_x1_MEP_PARDEFAULT);
-        System.out.println("MEP PARDEFAULT Y  " + ligne_INTRADEF_y1_MEP_PARDEFAULT);
-
         lg.ligne(g, color, ligne_INTRADEF_x1_MEP_URGENT, ligne_INTRADEF_y1_MEP_URGENT);
         lg.ligne(g, color, ligne_INTRADEF_x1_MEP_CONFIRME, ligne_INTRADEF_y1_MEP_CONFIRME);
         Graphics2D g2d = (Graphics2D) g.create();
