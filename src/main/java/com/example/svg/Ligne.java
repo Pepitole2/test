@@ -1,6 +1,28 @@
 package com.example.svg;
 
+import java.awt.*;
+import java.util.List;
+
 public class Ligne {
+
+    private int TAILLE_ITEM;
+
+    public Ligne(int TAILLE_ITEM){
+        this.TAILLE_ITEM=TAILLE_ITEM;
+    }
+
+    public void ligne(Graphics2D g, Color color, List<Integer> ligne_x, List<Integer> ligne_y) {
+        for (int y = 0; y < ligne_y.size(); y++) {
+            for (int a = y + 1; a < ligne_y.size(); a++) {
+                if (ligne_y.get(y).equals(ligne_y.get(a))) {
+                    g.setColor(color);
+                    g.drawLine(ligne_x.get(y) + TAILLE_ITEM / 2, ligne_y.get(y) + TAILLE_ITEM / 2,
+                            ligne_x.get(a) + TAILLE_ITEM / 2, ligne_y.get(a) + TAILLE_ITEM / 2);
+                    g.setColor(Color.black);
+                }
+            }
+        }
+    }
 
     /*List<Integer> liste_testx1 = new ArrayList<Integer>(ligne_INTRADEF_x1_MEP);
         List<Integer> liste_testy1 = new ArrayList<Integer>(ligne_INTRADEF_y1_MEP);

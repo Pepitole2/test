@@ -15,7 +15,8 @@ public class Item {
     private int ORIGINE_DESSIN_Y;
     private int MARGE_GAUCHE;
     private int HAUTEUR_LIGNE;
-    private Triangle triangle=new Triangle();       
+    private Triangle triangle=new Triangle();
+    private Ligne lg=new Ligne(TAILLE_ITEM);       
 
 
 
@@ -48,21 +49,7 @@ public class Item {
         //A CODER TA FINIT LA HIER
     }
 
-    public void ligne(Graphics2D g, Color color, List<Integer> ligne_x, List<Integer> ligne_y)
-    {
-        for (int y = 0; y < ligne_y.size(); y++) 
-        {
-            for (int a = y + 1; a < ligne_y.size(); a++)
-            {
-                if (ligne_y.get(y).equals(ligne_y.get(a))) 
-                {
-                    g.setColor(color);
-                    g.drawLine(ligne_x.get(y) + TAILLE_ITEM / 2, ligne_y.get(y) + TAILLE_ITEM / 2,ligne_x.get(a) + TAILLE_ITEM / 2, ligne_y.get(a) + TAILLE_ITEM / 2);
-                    g.setColor(Color.black);
-                }
-            }
-        }
-    }
+
 
 
     public void drawLigneCircleMEPP(Graphics2D g,Color color, int tab)
@@ -76,13 +63,13 @@ public class Item {
         System.out.println("MEP PARDEFAULT Y  " + ligne_INTRADEF_y1_MEPP_PARDEFAULT);
         System.out.println("");
         
-    ligne(g, Color.blue, ligne_INTRADEF_x1_MEPP_URGENT, ligne_INTRADEF_y1_MEPP_URGENT);
-    ligne(g, Color.blue, ligne_INTRADEF_x1_MEPP_CONFIRME, ligne_INTRADEF_y1_MEPP_CONFIRME);
+    lg.ligne(g, Color.blue, ligne_INTRADEF_x1_MEPP_URGENT, ligne_INTRADEF_y1_MEPP_URGENT);
+    lg.ligne(g, Color.blue, ligne_INTRADEF_x1_MEPP_CONFIRME, ligne_INTRADEF_y1_MEPP_CONFIRME);
     //creation des lignes en pointillé
     Graphics2D g2d = (Graphics2D) g.create();
     Stroke dashed = new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[] { 4 }, 0);
     g2d.setStroke(dashed);
-    ligne(g2d, Color.blue, ligne_INTRADEF_x1_MEPP_PARDEFAULT, ligne_INTRADEF_y1_MEPP_PARDEFAULT);
+    lg.ligne(g2d, Color.blue, ligne_INTRADEF_x1_MEPP_PARDEFAULT, ligne_INTRADEF_y1_MEPP_PARDEFAULT);
 
     
 }
@@ -99,12 +86,12 @@ public class Item {
         System.out.println("MEP PARDEFAULT X " + ligne_INTRADEF_x1_MEP_PARDEFAULT);
         System.out.println("MEP PARDEFAULT Y  " + ligne_INTRADEF_y1_MEP_PARDEFAULT);
 
-        ligne(g, color, ligne_INTRADEF_x1_MEP_URGENT, ligne_INTRADEF_y1_MEP_URGENT);
-        ligne(g, color, ligne_INTRADEF_x1_MEP_CONFIRME, ligne_INTRADEF_y1_MEP_CONFIRME);
+        lg.ligne(g, color, ligne_INTRADEF_x1_MEP_URGENT, ligne_INTRADEF_y1_MEP_URGENT);
+        lg.ligne(g, color, ligne_INTRADEF_x1_MEP_CONFIRME, ligne_INTRADEF_y1_MEP_CONFIRME);
         Graphics2D g2d = (Graphics2D) g.create();
         Stroke dashed = new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[] { 4 }, 0);
         g2d.setStroke(dashed);
-        ligne(g2d, color, ligne_INTRADEF_x1_MEP_PARDEFAULT, ligne_INTRADEF_y1_MEP_PARDEFAULT);
+        lg.ligne(g2d, color, ligne_INTRADEF_x1_MEP_PARDEFAULT, ligne_INTRADEF_y1_MEP_PARDEFAULT);
     }
 
     
